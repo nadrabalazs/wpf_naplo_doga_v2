@@ -19,6 +19,7 @@ namespace WPF_Napló
         public MainWindow()
         {
             InitializeComponent();
+            datDatum.Text = DateTime.Now.ToShortDateString();
         }
 
         private void sliJegyek_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -28,15 +29,15 @@ namespace WPF_Napló
 
         private void btnRogzit_Click(object sender, RoutedEventArgs e)
         {
-            string nev = txtNeve.Text;
+            string nev = txtNeve.Text.Trim();
             if (datDatum.SelectedDate.Value > DateTime.Now)
             {
                 MessageBox.Show("Nem lehet jövőbeli időpontot beállítani!");
 
             }
-            else if (!nev.Contains(" ") || nev.EndsWith(" ") || nev.StartsWith(" "))
+            else if (!nev.Contains(" "))
             {
-                MessageBox.Show("A név nem lehet egy tagú!");
+                MessageBox.Show("A név nem lehet kevesebb mint két tagú!");
             }
             else
             {
